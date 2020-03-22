@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:native_device_orientation/native_device_orientation.dart';
 
-void main() => runApp(MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.landscapeRight,
+    DeviceOrientation.landscapeLeft,
+  ]).then((_) {
+    runApp(MyApp());
+  });
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
