@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:native_device_orientation/native_device_orientation.dart';
 
 void main() => runApp(MyApp());
 
@@ -69,7 +70,11 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: NativeDeviceOrientationReader(
+          builder: (context) {
+            return Text("Orientation: ${NativeDeviceOrientationReader.orientation(context)}");
+          },
+        ),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
